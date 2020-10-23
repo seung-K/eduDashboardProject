@@ -25,5 +25,5 @@
 	<mvc:resources mapping="/favicon.ico" location="/WEB-INF/img/common/favicon.ico" />
 	
 	<mvc:annotation-driven />
-	
+
 </beans>

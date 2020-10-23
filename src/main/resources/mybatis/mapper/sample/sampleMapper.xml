@@ -3,10 +3,11 @@
 
 <mapper namespace="sampleMapper">
 	
-	<!-- for TestCase -->
-	<select id="selectTest" resultType="String">
-		SELECT 'for test case' FROM DUAL
+	<select id="selectUser" parameterType="com.eduDashboardProject.common.vo.UserVO" resultType="int">
+		SELECT COUNT(*) /* selectUser */
+	 	  FROM user_sh
+	 	 WHERE USER_ID = #{id}
+	 	   AND USER_PWD = #{password}
 	</select>
-	<!-- for TestCase -->
 	
 </mapper>

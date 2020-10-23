@@ -4,18 +4,19 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.eduDashboardProject.common.vo.UserVO;
 import com.eduDashboardProject.sample.service.SampleService;
 import com.eduDashboardProject.sample.service.dao.SampleDAO;
 
 @Service("SampleService")
 public class SampleServiceImpl implements SampleService {
 	
-	@Resource(name = "SampleDAO")
+	@Resource(name="SampleDAO")
 	private SampleDAO sampleDAO;
-	
-	public String getForDatabaseTest() throws Exception {
-		
-		return sampleDAO.getForDatabaseTest();
+
+	@Override
+	public int login(UserVO userVO) throws Exception {
+		return sampleDAO.login(userVO);
 	}
 	
 }
