@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,13 +30,14 @@ public class LoginController {
 	
 	@RequestMapping(value="/loginCheck.do", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Boolean> loginCheck(HttpServletRequest request, UserVO userVO) throws Exception {
+	public Map<String, Boolean> loginCheck(HttpServletRequest request, @ModelAttribute("userVO") UserVO userVO) throws Exception {
 
 		Map<String, Boolean> resultMap = new HashMap<String, Boolean>();
 		HttpSession session = request.getSession();
 
 		// 유저 정보가 일치하는지 확인
 		boolean result = loginService.loginCheck(userVO) > 0 ? true : false;
+		
 		resultMap.put("result", result);
 		session.setAttribute("userInfo", result ? userVO : null);
 		

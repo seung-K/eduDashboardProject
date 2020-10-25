@@ -48,6 +48,9 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="main-box-body clearfix">
+                    	<input type="button" value="글작성" onclick="" />
+                    </div>
                 </div>
             </div>
         </div>
