@@ -24,7 +24,6 @@
 			url: "/login/loginCheck.do",
 			data: param,
 			dataType: "json",
-			async: false
 		}).done((responseData) => {
 			if (responseData.result) {
 				location.href = "/board/list.do";

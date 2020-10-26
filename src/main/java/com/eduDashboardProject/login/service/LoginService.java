@@ -13,7 +13,7 @@ public class LoginService {
 	@Resource(name = "loginDAO")
 	private LoginDAO loginDAO;
 
-	public int loginCheck(UserVO userVO) throws Exception {
+	public String loginCheck(UserVO userVO) throws Exception {
 		return loginDAO.loginCheck("user-mapper.selectUser", userVO);
 	}
 

@@ -4,6 +4,7 @@
 
 	<resultMap id="boardDTO" type="com.eduDashboardProject.board.dto.BoardDTO">
 		<result property="board_number" column="board_number"></result>
+		<result property="user_number" column="user_number"></result>
 		<result property="identification" column="identification"></result>
 		<result property="title" column="title"></result>
 		<result property="comment" column="comment"></result>
@@ -19,5 +20,35 @@
 	      , DATE_FORMAT(create_date, '%Y-%m-%d') as create_date
 		  FROM board
 	</select>
+	
+	<select id="getDetail" parameterType="int" resultMap="boardDTO">
+		SELECT
+		    CAST(board_number AS CHAR) as board_number
+		  , user_number
+	      ,	identification
+	      , title
+	      , comment 
+	      , DATE_FORMAT(create_date, '%Y-%m-%d') as create_date
+		  FROM board 
+		 WHERE board_number = #{board_number}
+	</select>
+	
+	<insert id="insertBoard" parameterType="com.eduDashboardProject.board.dto.BoardDTO">
+		INSERT INTO board (user_number, title, identification, create_date, comment)
+		VALUES (#{user_number}, #{title}, #{identification}, SYSDATE(), #{comment})
+	</insert>
+	
+	<update id="modifyBoard" parameterType="com.eduDashboardProject.board.dto.BoardDTO">
+		UPDATE board
+		   SET title = #{title}
+		   	 , comment = #{comment}
+		   	 , create_date = SYSDATE()
+		 WHERE CAST(board_number AS CHAR) = #{board_number} 
+	</update>
+	
+	<delete id="deleteBoard" parameterType="String">
+		DELETE FROM board
+		 WHERE CAST(board_number AS CHAR) = #{board_number} 
+	</delete>
 
 </mapper>

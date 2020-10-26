@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +37,8 @@ public class LoginController {
 		HttpSession session = request.getSession();
 
 		// 유저 정보가 일치하는지 확인
-		boolean result = loginService.loginCheck(userVO) > 0 ? true : false;
+		userVO.setUser_number(loginService.loginCheck(userVO));
+		boolean result = !StringUtils.isEmpty(userVO.getUser_number()) ? true : false;
 		
 		resultMap.put("result", result);
 		session.setAttribute("userInfo", result ? userVO : null);

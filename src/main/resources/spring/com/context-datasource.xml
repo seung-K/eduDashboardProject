@@ -19,18 +19,6 @@
 	<bean id="sqlsessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
-	
-	<!-- 인터셉터 객체 생성 -->
-	<bean id="LoginInterceptor" class="com.eduDashboardProject.interceptor.LoginInterceptor" />
-	<!-- Interceptor 설정 -->
-<!-- 	<mvc:interceptors>
-	    <mvc:interceptor>
-	        <mvc:mapping path="/**"/>         
-	        <mvc:exclude-mapping path="/resources/**"/>
-	        <beans:ref bean="AuthLoginInterceptor"/>
-	    </mvc:interceptor>
-	</mvc:interceptors> -->
-	
 
 <!--
 	<util:properties id="githubProperties" location="classpath*:properties/github.properties"/>-->

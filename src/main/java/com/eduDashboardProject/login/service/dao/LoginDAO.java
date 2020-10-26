@@ -11,7 +11,7 @@ public class LoginDAO {
 	@Resource(name = "sqlsessionTemplate")
 	private SqlSessionTemplate sqlSession;
 	
-	public int loginCheck(String id, Object object) {
+	public String loginCheck(String id, Object object) {
 		return sqlSession.selectOne(id, object);
 	}
 }

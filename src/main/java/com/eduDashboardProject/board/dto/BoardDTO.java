@@ -6,43 +6,11 @@ import lombok.Data;
 public class BoardDTO {
 	
 	private String board_number;
+	private String user_number;
 	private String identification;
 	private String title;
 	private String comment;
 	private String create_date;
-	
-	public String getBoard_number() {
-		return board_number;
-	}
-	public void setBoard_number(String board_number) {
-		this.board_number = board_number;
-	}
-	public String getIdentification() {
-		return identification;
-	}
-	public void setIdentification(String identification) {
-		this.identification = identification;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getComment() {
-		return comment;
-	}
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-	public String getCreate_date() {
-		return create_date;
-	}
-
-	public void setCreate_date(String create_date) {
-		this.create_date = create_date;
-	}
-
 
 	public void makeInsertDateFormmat(String create_date) {
 		

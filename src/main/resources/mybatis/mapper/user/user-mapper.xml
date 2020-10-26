@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user-mapper">
 
-	<select id="selectUser" parameterType="com.eduDashboardProject.common.vo.UserVO" resultType="int">
-		SELECT COUNT(*) /* selectUser */
+	<select id="selectUser" parameterType="com.eduDashboardProject.common.vo.UserVO" resultType="String">
+		SELECT CAST(user_number AS CHAR)
 	 	  FROM user
 	 	 WHERE identification = #{identification}
 	 	   AND password = #{password}
