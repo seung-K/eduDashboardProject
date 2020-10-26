@@ -15,7 +15,8 @@
 		</repository>
 	</repositories>
 
-    <!-- Build Encoding UTF-8 Setting -->
+		
+	<!-- Build Encoding UTF-8 Setting -->
 	<properties>
 	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -76,13 +77,13 @@
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
-			<version>1.9.3</version>
+			<version>1.9.5</version>
 		</dependency>
 
 		<dependency>
 		    <groupId>org.aspectj</groupId>
 		    <artifactId>aspectjweaver</artifactId>
-		    <version>1.9.3</version>
+		    <version>1.9.5</version>
 		</dependency>
 
 		<dependency>
@@ -107,12 +108,6 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-compress</artifactId>
 			<version>1.8.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.26</version>
 		</dependency>
 
 		<dependency>
