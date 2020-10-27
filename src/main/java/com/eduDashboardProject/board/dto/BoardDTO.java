@@ -7,9 +7,9 @@ public class BoardDTO {
 	
 	private String board_number;
 	private String user_number;
-	private String identification;
+	private String id;
 	private String title;
-	private String comment;
+	private String content;
 	private String create_date;
 
 	public void makeInsertDateFormmat(String create_date) {

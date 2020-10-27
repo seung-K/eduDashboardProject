@@ -3,9 +3,9 @@
 <mapper namespace="user-mapper">
 
 	<select id="selectUser" parameterType="com.eduDashboardProject.common.vo.UserVO" resultType="String">
-		SELECT CAST(user_number AS CHAR)
-	 	  FROM user
-	 	 WHERE identification = #{identification}
-	 	   AND password = #{password}
+		SELECT CAST(USER_NUM AS CHAR)
+	 	  FROM User_sh
+	 	 WHERE USER_ID = #{id}
+	 	   AND PASSWORD = #{password}
 	</select>
 </mapper>

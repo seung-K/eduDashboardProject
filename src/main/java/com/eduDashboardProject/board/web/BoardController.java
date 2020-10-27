@@ -51,7 +51,7 @@ public class BoardController {
 		
 		Map<String, String> map = new HashMap<>();
 		map.put("user_number", ((UserVO)session.getAttribute("userInfo")).getUser_number());
-		map.put("identification", ((UserVO)session.getAttribute("userInfo")).getIdentification());
+		map.put("id", ((UserVO)session.getAttribute("userInfo")).getId());
 		
 		mv.setViewName("/board/board-detail");
 		mv.addObject("info", map);
@@ -63,6 +63,7 @@ public class BoardController {
 	@RequestMapping(value = "insertBoard.do", method=RequestMethod.POST)
 	@ResponseBody
 	public int insertBoard(HttpServletRequest request, @ModelAttribute("boardDTO") BoardDTO boardDTO) throws Exception {
+		boardDTO.setId(request.getSession().getId());
 		return boardService.insertBoard(boardDTO);
 	}
 	

@@ -9,7 +9,7 @@
 </script>
 <script type="text/javascript">
     var type;
-    var identification;
+    var id;
     var user_number;
 	
 	$(document).ready(() => {
@@ -30,7 +30,7 @@
 	
 	function modify() {
 		$('#title').attr("readonly", false);
-		$('#comment').attr("readonly", false);
+		$('#content').attr("readonly", false);
 		$('#modifyBtn').hide();
 		$('#saveBtn').show();
 	}
@@ -43,17 +43,17 @@
 			param = {
 				board_number: "${boardDTO.board_number}",
 				user_number: "${boardDTO.user_number}",
-				identification: "${boardDTO.identification}",
+				id: "${boardDTO.id}",
 				title: $('#title').val(),
-				comment: $('#comment').val()
+				content: $('#content').val()
 			}	
 			url = "/board/modifyBoard.do";
 		} else {
 			param = {
 				user_number: "${info['user_number']}",
-				identification: "${info['identification']}",
+				id: "${info['id']}",
 				title: $('#title').val(),
-				comment: $('#comment').val()
+				content: $('#content').val()
 			}
 			url = "/board/insertBoard.do";
 		}
@@ -86,7 +86,6 @@
 					location.href = "/board/list.do";
 				} else {
 					console.log(requestData);
-					alert('???');
 				}
 			}).fail(() => {
 				alert("통신 실패");
@@ -107,10 +106,10 @@
 				<td>작성자</td>
 				<c:choose>
 					<c:when test="${type eq 'detail' }">
-						<td>${boardDTO.identification }
+						<td>${boardDTO.id }
 					</c:when>
 					<c:otherwise>
-						<td>${info['identification']}</td>
+						<td>${info['id']}</td>
 					</c:otherwise>
 				</c:choose>
 			</tr>
@@ -129,10 +128,10 @@
 				<td>내용</td>
 				<c:choose>
 					<c:when test="${type eq 'detail' }">
-						<td><textarea id="comment" rows="20" cols="50" readonly>${boardDTO.comment }</textarea></td>
+						<td><textarea id="content" rows="20" cols="50" readonly>${boardDTO.content }</textarea></td>
 					</c:when>
 					<c:otherwise>
-						<td><textarea id="comment" rows="20" cols="50"></textarea></td>
+						<td><textarea id="content" rows="20" cols="50"></textarea></td>
 					</c:otherwise>
 				</c:choose>
 			</tr>

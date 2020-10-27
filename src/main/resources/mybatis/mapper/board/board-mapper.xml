@@ -3,52 +3,51 @@
 <mapper namespace="board-mapper">
 
 	<resultMap id="boardDTO" type="com.eduDashboardProject.board.dto.BoardDTO">
-		<result property="board_number" column="board_number"></result>
-		<result property="user_number" column="user_number"></result>
-		<result property="identification" column="identification"></result>
-		<result property="title" column="title"></result>
-		<result property="comment" column="comment"></result>
-		<result property="create_date" column="create_date"></result>
+		<result property="board_number" column="BOARD_NUM"></result>
+		<result property="user_number" column="USER_NUM"></result>
+		<result property="id" column="USER_ID"></result>
+		<result property="title" column="TITLE"></result>
+		<result property="content" column="CONTENT"></result>
+		<result property="create_date" column="CREATE_DATE"></result>
 	</resultMap>
 	
 	<select id="selectList" resultMap="boardDTO">
 		SELECT 
-			CAST(board_number AS CHAR) as board_number
-	      ,	identification
-	      , title
-	      , comment 
-	      , DATE_FORMAT(create_date, '%Y-%m-%d') as create_date
-		  FROM board
+			CAST(BOARD_NUM AS CHAR) as BOARD_NUM
+		  ,	USER_ID
+	      , TITLE
+	      , DATE_FORMAT(CREATE_DATE, '%Y-%m-%d') as CREATE_DATE
+		  FROM Board_sh
 	</select>
 	
 	<select id="getDetail" parameterType="int" resultMap="boardDTO">
 		SELECT
-		    CAST(board_number AS CHAR) as board_number
-		  , user_number
-	      ,	identification
-	      , title
-	      , comment 
-	      , DATE_FORMAT(create_date, '%Y-%m-%d') as create_date
-		  FROM board 
-		 WHERE board_number = #{board_number}
+		    CAST(BOARD_NUM AS CHAR) as BOARD_NUM
+		  , USER_NUM
+	      ,	USER_ID
+	      , TITLE
+	      , CONTENT 
+	      , DATE_FORMAT(CREATE_DATE, '%Y-%m-%d') as CREATE_DATE
+		  FROM Board_sh 
+		 WHERE BOARD_NUM = #{board_number}
 	</select>
 	
 	<insert id="insertBoard" parameterType="com.eduDashboardProject.board.dto.BoardDTO">
-		INSERT INTO board (user_number, title, identification, create_date, comment)
-		VALUES (#{user_number}, #{title}, #{identification}, SYSDATE(), #{comment})
+		INSERT INTO Board_sh (USER_NUM, TITLE, USER_ID, CONTENT, CREATE_DATE, UPDATE_DATE)
+		VALUES (#{user_number}, #{title}, #{id}, #{content}, SYSDATE(), SYSDATE())
 	</insert>
 	
 	<update id="modifyBoard" parameterType="com.eduDashboardProject.board.dto.BoardDTO">
-		UPDATE board
+		UPDATE Board_sh
 		   SET title = #{title}
-		   	 , comment = #{comment}
-		   	 , create_date = SYSDATE()
-		 WHERE CAST(board_number AS CHAR) = #{board_number} 
+		   	 , CONTENT = #{content}
+		   	 , UPDATE_DATE = SYSDATE()
+		 WHERE CAST(BOARD_NUM AS CHAR) = #{board_number}
 	</update>
 	
 	<delete id="deleteBoard" parameterType="String">
-		DELETE FROM board
-		 WHERE CAST(board_number AS CHAR) = #{board_number} 
+		DELETE FROM Board_sh
+		 WHERE CAST(BOARD_NUM AS CHAR) = #{board_number} 
 	</delete>
 
 </mapper>

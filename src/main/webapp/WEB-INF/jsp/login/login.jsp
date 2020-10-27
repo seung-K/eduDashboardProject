@@ -16,7 +16,7 @@
 	function loginCheck() {
 		// ajax 통신
 		var param = {
-				identification: UserLoginForm.identification.value,
+				id: UserLoginForm.id.value,
     			password: UserLoginForm.password.value
 		}
 		$.ajax ({
@@ -47,7 +47,7 @@
     <div class="col-md-6 form-content">
       <form accept-charset="utf-8" id="UserLoginForm" class="form-signin">    	
         <h1 class="form-signin-heading text-muted">Login</h1>
-        <input type="text" id="identification" autofocus="autofocus" placeholder="id를 입력하세요" class="form-control" required="required">
+        <input type="text" id="id" autofocus="autofocus" placeholder="id를 입력하세요" class="form-control" required="required">
         <input type="password" id="password" placeholder="비밀번호를 입력하세요" class="form-control" required="required">	
         <input type="button" class="btn btn-lg btn-info btn-block" onclick="loginCheck()" value="Login" />
       </form>    
