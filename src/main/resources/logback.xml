@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration scan="true" scanPeriod="30 seconds">
 	<property name="LOG_DIR" value="/edu-project/logs/ksh" />
 
 	<appender name="DEBUG_FILE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -29,11 +29,18 @@
 	</appender>
 	
 	<logger name="org.springframework" level="INFO" />
-	<logger name="org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor" level="DEBUG" />
+	<logger name="org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor" level="DEBUG">
+		<appender-ref ref="DEBUG_FILE_LOG" />
+    	<appender-ref ref="ERR_FILE_LOG" />
+	</logger>
 	<logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="WARN" />
 	<logger name="org.apache.commons.beanutils" level="INFO" />
-	<logger name="org.mybatis.spring" level="INFO" />
-    <logger name="com.eduDashboardProject" level="INFO">
+	<logger name="org.mybatis.spring" level="DEBUG" >
+		<appender-ref ref="DEBUG_FILE_LOG" />
+    	<appender-ref ref="ERR_FILE_LOG" />
+	</logger>
+    <logger name="com.eduDashboardProject" level="DEBUG">
+    	<appender-ref ref="DEBUG_FILE_LOG" />
     	<appender-ref ref="ERR_FILE_LOG" />
     </logger>
     
