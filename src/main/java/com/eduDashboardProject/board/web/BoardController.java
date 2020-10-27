@@ -62,21 +62,28 @@ public class BoardController {
 	
 	@RequestMapping(value = "insertBoard.do", method=RequestMethod.POST)
 	@ResponseBody
-	public int insertBoard(HttpServletRequest request, @ModelAttribute("boardDTO") BoardDTO boardDTO) throws Exception {
-		boardDTO.setId(request.getSession().getId());
-		return boardService.insertBoard(boardDTO);
+	public Map<String, Integer> insertBoard(HttpServletRequest request, @ModelAttribute("boardDTO") BoardDTO boardDTO) throws Exception {
+		
+		boardDTO.setId(((UserVO)request.getSession().getAttribute("userInfo")).getId());
+		Map<String, Integer> map = new HashMap<>();
+		map.put("result", boardService.insertBoard(boardDTO));
+		return map;
 	}
 	
 	@RequestMapping(value = "/modifyBoard.do", method=RequestMethod.POST)
 	@ResponseBody
-	public int modifyBoard(HttpServletRequest request, @ModelAttribute("boardDTO") BoardDTO boardDTO) throws Exception {
-		return boardService.ModifyBoard(boardDTO);
+	public Map<String, Integer> modifyBoard(HttpServletRequest request, @ModelAttribute("boardDTO") BoardDTO boardDTO) throws Exception {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("result", boardService.ModifyBoard(boardDTO));
+		return map;
 	}
 
 	@RequestMapping(value = "/deleteBoard.do", method=RequestMethod.POST)
 	@ResponseBody
-	public int deleteBoard(HttpServletRequest request, @RequestParam(value = "board_number", required = true) String board_number) throws Exception {
-		return boardService.deleteBoard(board_number);
+	public Map<String, Integer> deleteBoard(HttpServletRequest request, @RequestParam(value = "board_number", required = true) String board_number) throws Exception {
+		Map<String, Integer> map = new HashMap<>();
+		map.put("result", boardService.deleteBoard(board_number));
+		return map;
 	}
 	
 }

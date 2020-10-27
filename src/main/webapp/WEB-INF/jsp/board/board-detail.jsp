@@ -8,9 +8,11 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js">
 </script>
 <script type="text/javascript">
-    var type;
-    var id;
-    var user_number;
+    var type = "";
+    var id = "";
+    var user_number = "";
+    var param = {};
+	var url = "";
 	
 	$(document).ready(() => {
 	    type = ("${type}");
@@ -36,9 +38,6 @@
 	}
 
 	function save() {
-		var param = {};
-		var url = "";
-		
 		if (type == "detail") {
 			param = {
 				board_number: "${boardDTO.board_number}",
@@ -57,42 +56,35 @@
 			}
 			url = "/board/insertBoard.do";
 		}
-
-		$.ajax ({
-			type: "POST",
-			url: url,
-			data: param,
-			dataType: "json",
-		}).done((requestData) => {
-			if (requestData > 0) {
-				location.href = "/board/list.do";
-			}
-		}).fail(() => {
-			alert("통신 실패");
-		})
+		ajax();
 	}
 
 	function deleteBoard() {
 		var result = confirm("게시물을 삭제하시겠습니까?");
 
 		if(result) {
-			$.ajax ({
-				type: 'POST',
-				url: "/board/deleteBoard.do",
-				data: {board_number: "${boardDTO.board_number}"},
-				dataType: "json",
-			}).done((requestData) => {
-				if (requestData > 0) {
-					location.href = "/board/list.do";
-				} else {
-					console.log(requestData);
-				}
-			}).fail(() => {
-				alert("통신 실패");
-			})
+			param = {board_number: "${boardDTO.board_number}"};
+			url = "/board/deleteBoard.do";
+
+			ajax();
 		}
 	}
 
+	function ajax() {
+		$.ajax ({
+			type: 'POST',
+			url: url,
+			data: param,
+			dataType: "json",
+		}).done((requestData) => {
+			if (requestData.result > 0) {
+				location.href = "/board/list.do";
+			}
+		}).fail(() => {
+			alert("통신 실패");
+		})
+	}
+	
 	function back() {
 		history.back();	
 	}
