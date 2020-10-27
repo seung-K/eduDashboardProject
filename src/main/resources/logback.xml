@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="30 seconds">
 	<property name="LOG_DIR" value="/edu-project/logs/ksh" />
-
 	<appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 	        <fileNamePattern>${LOG_DIR}/debugLog-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
