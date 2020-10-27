@@ -77,8 +77,13 @@
 		    <version>4.3.24.RELEASE</version>
 		</dependency>
 		
-		<!-- logback -->
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-api</artifactId>
+		    <version>2.11.1</version>
+		</dependency>
 		
+		<!-- logback -->
 		<!-- loback-classic라이브러리가 의존성을 가지고 있으므로 추가하지 않아도 자동 설치 -->
 		<dependency>
 		  <groupId>org.slf4j</groupId>
