@@ -49,7 +49,7 @@ public class BoardController {
 		
 		HttpSession session = request.getSession();
 		
-		Map<String, String> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();
 		map.put("user_number", ((UserVO)session.getAttribute("userInfo")).getUser_number());
 		map.put("id", ((UserVO)session.getAttribute("userInfo")).getId());
 		
@@ -80,9 +80,10 @@ public class BoardController {
 
 	@RequestMapping(value = "/deleteBoard.do", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Integer> deleteBoard(HttpServletRequest request, @RequestParam(value = "board_number", required = true) String board_number) throws Exception {
+	public Map<String, Integer> deleteBoard(HttpServletRequest request, @RequestParam(value = "board_number", required = true) String board_number
+			, @RequestParam(value = "user_number", required = true) String user_number) throws Exception {
 		Map<String, Integer> map = new HashMap<>();
-		map.put("result", boardService.deleteBoard(board_number));
+		map.put("result", boardService.deleteBoard(board_number, user_number));
 		return map;
 	}
 	

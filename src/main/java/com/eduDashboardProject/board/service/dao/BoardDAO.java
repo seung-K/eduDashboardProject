@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.eduDashboardProject.board.dto.BoardDTO;
+import com.eduDashboardProject.board.dto.BoardHistoryDTO;
 
 @Repository("boardDAO")
 public class BoardDAO {
@@ -19,8 +20,8 @@ public class BoardDAO {
 		return sqlSession.selectList("board-mapper.selectList");
 	}
 	
-	public BoardDTO getDetail(int board_number) throws Exception {
-		return sqlSession.selectOne("board-mapper.getDetail", board_number);
+	public BoardDTO getDetail(String board_number) throws Exception {
+		return sqlSession.selectOne("board-mapper.selectDetail", board_number);
 	}
 	
 	public int insertBoard(BoardDTO boardDTO) throws Exception {
@@ -34,4 +35,9 @@ public class BoardDAO {
 	public int deleteBoard(String board_number) throws Exception {
 		return (int) sqlSession.delete("board-mapper.deleteBoard", board_number);
 	}
+	
+	public int insertBoardHistory(BoardHistoryDTO historyDTO) throws Exception {
+		return (int) sqlSession.insert("board-mapper.insertBoardHistory", historyDTO);
+	}
+	
 }

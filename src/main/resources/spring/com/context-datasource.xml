@@ -19,7 +19,7 @@
 	<bean id="sqlsessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
-
+	
 <!--
 	<util:properties id="githubProperties" location="classpath*:properties/github.properties"/>-->
 </beans>

@@ -13,17 +13,17 @@
 	
 	<select id="selectList" resultMap="boardDTO">
 		SELECT 
-			CAST(BOARD_NUM AS CHAR) as BOARD_NUM
+			CAST(BOARD_NUM AS CHAR) AS BOARD_NUM
 		  ,	USER_ID
 	      , TITLE
 	      , DATE_FORMAT(CREATE_DATE, '%Y-%m-%d') as CREATE_DATE
 		  FROM Board_sh
 	</select>
 	
-	<select id="getDetail" parameterType="int" resultMap="boardDTO">
+	<select id="selectDetail" parameterType="String" resultMap="boardDTO">
 		SELECT
-		    CAST(BOARD_NUM AS CHAR) as BOARD_NUM
-		  , USER_NUM
+		    CAST(BOARD_NUM AS CHAR) AS BOARD_NUM
+		  , CAST(USER_NUM AS CHAR) AS USER_NUM
 	      ,	USER_ID
 	      , TITLE
 	      , CONTENT 
@@ -33,21 +33,41 @@
 	</select>
 	
 	<insert id="insertBoard" parameterType="com.eduDashboardProject.board.dto.BoardDTO">
-		INSERT INTO Board_sh (USER_NUM, TITLE, USER_ID, CONTENT, CREATE_DATE, UPDATE_DATE)
-		VALUES (#{user_number}, #{title}, #{id}, #{content}, SYSDATE(), SYSDATE())
+	<selectKey keyProperty="board_number" resultType="String" order="AFTER" >
+		SELECT CAST(MAX(BOARD_NUM) AS CHAR) FROM Board_sh
+	</selectKey>
+		INSERT INTO Board_sh ( USER_NUM, TITLE, USER_ID, CONTENT, CREATE_DATE, UPDATE_DATE )  /* insertBoard */
+		VALUES (
+				#{user_number}
+			  , #{title}
+			  , #{id}
+			  , #{content}
+			  , DATE_FORMAT(SYSDATE(), '%Y-%m-%d %T')
+			  , DATE_FORMAT(SYSDATE(), '%Y-%m-%d %T')
+			  )
 	</insert>
 	
 	<update id="modifyBoard" parameterType="com.eduDashboardProject.board.dto.BoardDTO">
-		UPDATE Board_sh
+		UPDATE Board_sh /* modifyBoard */
 		   SET title = #{title}
 		   	 , CONTENT = #{content}
-		   	 , UPDATE_DATE = SYSDATE()
-		 WHERE CAST(BOARD_NUM AS CHAR) = #{board_number}
+		   	 , UPDATE_DATE = DATE_FORMAT(SYSDATE(), '%Y-%m-%d %T')
+		 WHERE BOARD_NUM = #{board_number}
 	</update>
 	
 	<delete id="deleteBoard" parameterType="String">
-		DELETE FROM Board_sh
-		 WHERE CAST(BOARD_NUM AS CHAR) = #{board_number} 
+		DELETE FROM Board_sh /* deleteBoard */
+		 WHERE BOARD_NUM = #{board_number} 
 	</delete>
-
+	
+	<insert id="insertBoardHistory" parameterType="com.eduDashboardProject.board.dto.BoardHistoryDTO">
+		INSERT INTO Board_history /* insertBoardHistory */ 
+			( BOARD_NUM, USER_NUM, COMMENT, CREATE_DATE )
+		VALUES (
+				#{board_number}
+			  , #{user_number}
+			  , #{comment}
+			  , DATE_FORMAT(SYSDATE(), '%Y-%m-%d %T')
+			  )
+	</insert>
 </mapper>

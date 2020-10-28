@@ -37,7 +37,7 @@ public class LoginController {
 		HttpSession session = request.getSession();
 
 		// 유저 정보가 일치하는지 확인
-		userVO.setUser_number(loginService.loginCheck(userVO));
+		userVO.setUser_number(Integer.toString(loginService.loginCheck(userVO)));
 		boolean result = !StringUtils.isEmpty(userVO.getUser_number()) ? true : false;
 		
 		resultMap.put("result", result);

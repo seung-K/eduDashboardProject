@@ -63,7 +63,10 @@
 		var result = confirm("게시물을 삭제하시겠습니까?");
 
 		if(result) {
-			param = {board_number: "${boardDTO.board_number}"};
+			param = {
+				board_number: "${boardDTO.board_number}",
+				user_number: "${boardDTO.user_number}"
+			};
 			url = "/board/deleteBoard.do";
 
 			ajax();

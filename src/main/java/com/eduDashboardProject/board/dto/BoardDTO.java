@@ -11,7 +11,7 @@ public class BoardDTO {
 	private String title;
 	private String content;
 	private String create_date;
-
+	
 	public void makeInsertDateFormmat(String create_date) {
 		
 		String year = create_date.substring(0, 4);
@@ -23,5 +23,6 @@ public class BoardDTO {
 		
 		this.create_date = year + "-" + month + "-" + date;
 	}
+	
 
 }

@@ -1,5 +1,7 @@
 package com.eduDashboardProject.login.service;
 
+import java.util.HashMap;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -13,8 +15,18 @@ public class LoginService {
 	@Resource(name = "loginDAO")
 	private LoginDAO loginDAO;
 
-	public String loginCheck(UserVO userVO) throws Exception {
-		return loginDAO.loginCheck("user-mapper.selectUser", userVO);
+	public int loginCheck(UserVO userVO) throws Exception {
+		int user_number = loginDAO.loginCheck(userVO);
+		
+		if (user_number > 0) {
+			
+			HashMap<String, Object> param = new HashMap<>();
+			param.put("user_number", user_number);
+			param.put("comment", "로그인");
+			
+			loginDAO.insertUserHistory(param);
+		}
+		return user_number;
 	}
 
 }
