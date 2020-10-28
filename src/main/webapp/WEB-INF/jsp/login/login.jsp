@@ -4,10 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-<script src="https://code.jquery.com/jquery-3.4.1.js"   
-    	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   
-    	crossorigin="anonymous">
-</script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -40,7 +37,7 @@
 <body>
 <hr>
 <div class="container bootstrap snippets bootdey">
-  <div style="height:auto;min-height:300px;" class="jumbotron">
+  <div style="height:auto;min-height:400px;" class="jumbotron">
     <div class="col-md-4">
        <img class="img-responsive center-block img-user" src="https://bootdey.com/img/Content/Manbrown2.png"> 
     </div>
@@ -49,7 +46,9 @@
         <h1 class="form-signin-heading text-muted">Login</h1>
         <input type="text" id="id" autofocus="autofocus" placeholder="id를 입력하세요" class="form-control" required="required">
         <input type="password" id="password" placeholder="비밀번호를 입력하세요" class="form-control" required="required">	
+        <br/>
         <input type="button" class="btn btn-lg btn-info btn-block" onclick="loginCheck()" value="Login" />
+        <input type="button" class="btn btn-lg btn-info btn-block" onclick="location.href='/regist/registForm.do'" value="Regist" />
       </form>    
     </div>
   </div>

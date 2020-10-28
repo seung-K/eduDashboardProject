@@ -73,6 +73,7 @@ public class BoardController {
 	@RequestMapping(value = "/modifyBoard.do", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Integer> modifyBoard(HttpServletRequest request, @ModelAttribute("boardDTO") BoardDTO boardDTO) throws Exception {
+		
 		Map<String, Integer> map = new HashMap<>();
 		map.put("result", boardService.ModifyBoard(boardDTO));
 		return map;
@@ -82,6 +83,7 @@ public class BoardController {
 	@ResponseBody
 	public Map<String, Integer> deleteBoard(HttpServletRequest request, @RequestParam(value = "board_number", required = true) String board_number
 			, @RequestParam(value = "user_number", required = true) String user_number) throws Exception {
+		
 		Map<String, Integer> map = new HashMap<>();
 		map.put("result", boardService.deleteBoard(board_number, user_number));
 		return map;

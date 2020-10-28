@@ -2,15 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user-mapper">
 
+	<select id="selectUserId" parameterType="String" resultType="int">
+		SELECT COUNT(*) 
+		  FROM User_sh /*selectUserId*/
+		 WHERE USER_ID = #{user_id}
+	</select>
+	
+	<insert id="insertUser" parameterType="com.eduDashboardProject.common.vo.UserVO">
+	<selectKey keyProperty="user_number" resultType="String" order="AFTER">
+		SELECT MAX(USER_NUM) FROM User_sh
+	</selectKey>
+		INSERT INTO User_sh (USER_ID, PASSWORD, CREATE_DTTM) /* insertUser */
+		VALUES (#{id}, #{password}, DATE_FORMAT(SYSDATE(), '%Y-%m-%d %T'))
+	</insert>
+
 	<select id="selectUser" parameterType="com.eduDashboardProject.common.vo.UserVO" resultType="int">
-		SELECT USER_NUM
+		SELECT USER_NUM /* selectUser */
 	 	  FROM User_sh
 	 	 WHERE USER_ID = #{id}
 	 	   AND PASSWORD = #{password}
 	</select>
 	
 	<insert id="insertUserHistory" parameterType="hashMap">
-		INSERT INTO User_history (USER_NUM, COMMENT, CREATE_DATE)
+		INSERT INTO User_history (USER_NUM, COMMENT, CREATE_DATE) /* insertUserHistory */
 		VALUES (#{user_number}, #{comment}, DATE_FORMAT(SYSDATE(), '%Y-%m-%d %T'))
 	</insert>
 </mapper>

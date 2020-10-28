@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://code.jquery.com/jquery-3.4.1.js">
-</script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
     var type = "";
     var id = "";
