@@ -60,7 +60,7 @@
 		 WHERE BOARD_NUM = #{board_number} 
 	</delete>
 	
-	<insert id="insertBoardHistory" parameterType="com.eduDashboardProject.board.dto.BoardHistoryDTO">
+	<insert id="insertBoardHistory" parameterType="com.eduDashboardProject.admin.dto.BoardHistoryDTO">
 		INSERT INTO Board_history /* insertBoardHistory */ 
 			( BOARD_NUM, USER_NUM, COMMENT, CREATE_DATE )
 		VALUES (

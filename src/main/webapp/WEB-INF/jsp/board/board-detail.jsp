@@ -7,11 +7,11 @@
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-    var type = "";
-    var id = "";
-    var user_number = "";
-    var param = {};
-	var url = "";
+    let type = "";
+    let id = "";
+    let user_number = "";
+    let param = {};
+	let url = "";
 	
 	$(document).ready(() => {
 	    type = ("${type}");
@@ -59,7 +59,7 @@
 	}
 
 	function deleteBoard() {
-		var result = confirm("게시물을 삭제하시겠습니까?");
+		const result = confirm("게시물을 삭제하시겠습니까?");
 
 		if(result) {
 			param = {

@@ -1,4 +1,4 @@
-package com.eduDashboardProject.board.dto;
+package com.eduDashboardProject.admin.dto;
 
 import lombok.Data;
 

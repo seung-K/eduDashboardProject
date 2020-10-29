@@ -12,7 +12,7 @@
 
 	function loginCheck() {
 		// ajax 통신
-		var param = {
+		const param = {
 				id: UserLoginForm.id.value,
     			password: UserLoginForm.password.value
 		}

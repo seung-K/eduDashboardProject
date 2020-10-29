@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.eduDashboardProject.board.dto.BoardDTO;
-import com.eduDashboardProject.board.dto.BoardHistoryDTO;
+import com.eduDashboardProject.admin.dto.BoardHistoryDTO;
 import com.eduDashboardProject.board.service.dao.BoardDAO;
 
 @Service("boardService")

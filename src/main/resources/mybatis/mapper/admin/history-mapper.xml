@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="history-mapper">
+
+	<resultMap id="userHistoryDTO" type="com.eduDashboardProject.admin.dto.UserHistoryDTO">
+		<result property="user_number" column="USER_NUM"></result>
+		<result property="comment" column="COMMNET"></result>
+	</resultMap>
+	
+	<resultMap id="boardHistoryDTO" type="com.eduDashboardProject.admin.dto.BoardHistoryDTO">
+		<result property="board_number" column="BOARD_NUM"></result>
+		<result property="user_number" column="USER_NUM"></result>
+		<result property="comment" column="COMMNET"></result>
+	</resultMap>
+
+	<select id="selectUserHistory" resultMap="userHistoryDTO">
+		SELECT USER_NUM  /* selectUserHistory */
+			 , COMMNET
+		  FROM User_history
+	</select>
+	
+	<select id="selectBoardHistory" resultMap="boardHistoryDTO">
+		SELECT BOARD_NUM  /* selectBoardHistory */
+			 , USER_NUM
+			 , COMMNET
+		  FROM User_history
+	</select>
+</mapper>

@@ -43,6 +43,9 @@ public class LoginController {
 		resultMap.put("result", result);
 		session.setAttribute("userInfo", result ? userVO : null);
 		
+		// 관리자 확인
+		session.setAttribute("account", userVO.getId().equals("admin") ? "admin" : "user");
+		
 		return resultMap;
 	}
 

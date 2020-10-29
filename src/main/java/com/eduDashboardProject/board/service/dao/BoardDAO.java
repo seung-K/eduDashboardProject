@@ -8,7 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.eduDashboardProject.board.dto.BoardDTO;
-import com.eduDashboardProject.board.dto.BoardHistoryDTO;
+import com.eduDashboardProject.admin.dto.BoardHistoryDTO;
 
 @Repository("boardDAO")
 public class BoardDAO {
