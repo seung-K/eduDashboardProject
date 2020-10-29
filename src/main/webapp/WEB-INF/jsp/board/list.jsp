@@ -36,9 +36,9 @@
 <body>
 <hr>
 <div id="wrapper" class="wrapper-content">
-    <jsp:include page="/WEB-INF/jsp/common/side-bar.jsp" />
+		<jsp:include page="/WEB-INF/jsp/common/side-bar.jsp" />
 
-    <div id="page-content-wrapper">
+		<div id="page-content-wrapper">
         <div class="container-fluid" id="content">
             <div class="row">
                 <div class="col-lg-12">

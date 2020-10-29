@@ -49,7 +49,7 @@
 <div class="navbar navbar-default navbar-static-top">
   <div class="container bootstrap snippets bootdey">
     <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
+   		<ul class="nav navbar-nav">
         <li><a href="#">DashBoard</a></li>
         <li class="dropdown"><a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">History<b class="caret"></b></a>
             <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
@@ -61,22 +61,5 @@
     </div>
   </div>
 </div>
-
-<!-- 
-<div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-        <li>
-            <a href="#" onClick="getList('/board/list.do', 'list')">DashBoard</a>
-        </li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">History</a>
-            <ul class="dropdown-menu">
-            	<li><a href="#" onclick="getList('/admin/userHistory', 'history')">UserHistory</a></li>
-            	<li><a href="#" onclick="getList('/admin/boardHistory', 'history')">BoardHistory</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
- -->
 </body>
 </html>
